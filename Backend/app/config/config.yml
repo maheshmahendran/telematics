@@ -85,6 +85,9 @@ jms_serializer:
         lower_case: true
     metadata:
         auto_detection: true
+    handlers:
+        datetime:
+            default_format: 'Y-m-d\TH:i:s.uT'
 
 #FOS REST Configuration
 fos_rest:

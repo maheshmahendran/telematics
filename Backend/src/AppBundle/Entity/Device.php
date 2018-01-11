@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Device
@@ -19,13 +20,7 @@ class Device
      * @ORM\Column(name="id", type="integer", nullable=false, unique=true)
      * @ORM\Id
      * @Serializer\Groups({"default"})
-     * @Assert\NotNull(
-     *     groups={"post"}
-     * )
-     * @Assert\NotBlank(
-     *     groups={"post"},
-     *     message="Device ID is required"
-     * )
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -66,26 +61,113 @@ class Device
     private $deviceLabel;
 
     /**
-     * @ORM\Column(name="deviceLabel", type="datetimetz", nullable=false)
+     * @ORM\Column(name="lastReportedTime", type="datetime", nullable=false)
      * @Serializer\Groups({"default"})
      * @Assert\NotNull(
      *     groups={"post"}
      * )
      * @Assert\NotBlank(
      *     groups={"post"},
-     *     message="Device Label should not be blank"
+     *     message="Device LastReportedTime should not be blank"
      * )
      */
     private $lastReportedTime;
 
     /**
-     * @ORM\Column(name="status", type="string", length=7, nullable=false)
-     * @Serializer\Groups({"default"})
+     * @var string
      */
     private $status;
+
+    /**
+     * @var string
+     */
+    private $timezone;
 
     /**
      * @var bool
      */
     private $localized = false;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set deviceId
+     *
+     * @param string $deviceId
+     *
+     * @return Device
+     */
+    public function setDeviceId($deviceId)
+    {
+        $this->deviceId = $deviceId;
+
+        return $this;
+    }
+
+    /**
+     * Get deviceId
+     *
+     * @return string
+     */
+    public function getDeviceId()
+    {
+        return $this->deviceId;
+    }
+
+    /**
+     * Set deviceLabel
+     *
+     * @param string $deviceLabel
+     *
+     * @return Device
+     */
+    public function setDeviceLabel($deviceLabel)
+    {
+        $this->deviceLabel = $deviceLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get deviceLabel
+     *
+     * @return string
+     */
+    public function getDeviceLabel()
+    {
+        return $this->deviceLabel;
+    }
+
+    /**
+     * Set lastReportedTime
+     *
+     * @param \DateTime $lastReportedTime
+     *
+     * @return Device
+     */
+    public function setLastReportedTime($lastReportedTime)
+    {
+        $this->lastReportedTime = $lastReportedTime;
+
+        return $this;
+    }
+
+    /**
+     * Get lastReportedTime
+     *
+     * @return \DateTime
+     */
+    public function getLastReportedTime()
+    {
+        return $this->lastReportedTime;
+    }
 }
