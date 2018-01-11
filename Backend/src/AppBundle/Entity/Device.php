@@ -10,17 +10,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class Device
  * @package AppBundle\Entity
  *
- * @ORM\Entity(repositoryClass="AppBundle\Entity\DeviceRepository")
  * @ORM\Table(name="devices")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\DeviceRepository")
  * @Hateoas\Relation("self", href="expr('/device/' ~ object.getId())")
  */
 class Device
 {
     /**
-     * @ORM\Column(name="id", type="integer", nullable=false, unique=true)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @Serializer\Groups({"default"})
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue()
      */
     private $id;
 

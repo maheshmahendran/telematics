@@ -25,12 +25,12 @@ class DevicesController extends FOSRestController
     /**
      * @Rest\Get(path="", name="devices_get")
      *
-     * @Rest\View(serializerGroups={"default"})
+     * @Rest\View(serializerGroups={"default", "succinct_relationships"})
      *
      * @Rest\QueryParam(
      *      name="deviceId",
      *      nullable=true,
-     *      description="Filter Item by Device ID"
+     *      description="Filter by Device ID"
      * )
      *
      * @Rest\QueryParam(
