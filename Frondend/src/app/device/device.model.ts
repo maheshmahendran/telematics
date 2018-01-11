@@ -1,14 +1,14 @@
 export class Device {
     constructor(
-        public deviceId: string,
-        public deviceLabel: string,
-        public lastReportedTime: string,
+        public device_id: string,
+        public device_label: string,
+        public last_reported_time: string,
         public status?: string,
         public colorCode?: string,
         public formatedLRT? : Date
     ) {
         this.status = status || 'OFFLINE';
         this.colorCode = (this.status == 'OK')? 'green' : 'red';
-        this.formatedLRT = new Date(this.lastReportedTime);
+        this.formatedLRT = new Date(this.last_reported_time);
     }
 }
