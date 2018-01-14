@@ -80,6 +80,7 @@ swiftmailer:
     spool: { type: memory }
 
 # JMS Serializer Configuration
+#Y-m-d\TH:i:s.uP
 jms_serializer:
     property_naming:
         separator:  _
@@ -88,7 +89,7 @@ jms_serializer:
         auto_detection: true
     handlers:
         datetime:
-            default_format: 'Y-m-d\TH:i:s.uT'
+            default_format: 'Y-m-d\TH:i:s'
 
 #FOS REST Configuration
 fos_rest:

@@ -19,7 +19,7 @@ class Device
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue()
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -74,8 +74,9 @@ class Device
 
     /**
      * @var string
+     * @Serializer\Groups({"default"})
      */
-    private $status;
+    private $status = 'OFFLINE';
 
     /**
      * @var string
@@ -168,5 +169,10 @@ class Device
     public function getLastReportedTime()
     {
         return $this->lastReportedTime;
+    }
+
+    public function getStatus()
+    {
+
     }
 }

@@ -75,8 +75,8 @@ class DevicesController extends FOSRestController
         $orderBy = $paramFetcher->get('order_by');
         $orderDirection = $paramFetcher->get('order_direction');
 
-        if (empty($orderDirection) || strtoupper($orderDirection) != 'DESC') {
-            $orderDirection = 'ASC';
+        if (empty($orderDirection) || strtoupper($orderDirection) != 'ASC') {
+            $orderDirection = 'DESC';
         }
 
         $limit = (empty($paramFetcher->get('limit'))) ? 25 : $paramFetcher->get('limit');
@@ -101,7 +101,15 @@ class DevicesController extends FOSRestController
      *          }
      *      }
      * )
-     *
+     * @SWG\Response(
+     *     response=201,
+     *     description="POST Device",
+     *     @SWG\Schema(
+     *         type="array",
+     *         @Model(type=Device::class, groups={"default"})
+     *     )
+     * )
+     * @SWG\Tag(name="Devices")
      */
     public function postAction(
         Device $device,
